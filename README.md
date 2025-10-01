@@ -1,4 +1,4 @@
-# Note-Keeper 📝
+# Notes-Keeper 📝
 
 A full-stack web application for creating, organizing, and managing notes efficiently.  
 Built with the **MERN stack** (MongoDB, Express, React, Node.js) and styled using **Tailwind CSS**.

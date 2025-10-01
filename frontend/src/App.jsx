@@ -1,9 +1,23 @@
-import React from 'react'
+import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
+import Home from "./pages/Home";
+import CreateNote from "./pages/CreateNote";
+import { Route,Routes } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className='p-4 text-xl font-semibold bg-gray-400'>App</div>
-  )
-}
+    <div>
+      <Navbar />
 
-export default App
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/create-note" element={<CreateNote/>} />
+    
+      </Routes>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default App;
