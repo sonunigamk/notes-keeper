@@ -8,10 +8,10 @@ import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white ">
+    <div className="flex flex-col min-h-screen bg-gray-900 text-white">
       <Navbar />
 
-      <main className="flex-1 container mx-auto p-4  md:w-[90%]">
+      <main className="flex-1 container mx-auto p-4 md:w-[90%]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateNote />} />
