@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose, { Mongoose } from "mongoose";
+import cors from "cors";
 
 import noteRouters from "./routes/note.route.js";
 
@@ -17,6 +18,8 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 //Routing Middleware
+
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1/notes", noteRouters);
 

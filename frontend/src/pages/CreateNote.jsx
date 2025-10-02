@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import { NoteForm } from "../component/NoteForm";
 
 const CreateNote = () => {
   return (
-    <div>CreateNote</div>
-  )
-}
+    <div>
+      <NoteForm />
+    </div>
+  );
+};
 
-export default CreateNote
+export default CreateNote;
