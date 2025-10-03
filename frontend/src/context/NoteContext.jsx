@@ -1,11 +1,11 @@
-import { useState, useEffect, createContext } from "react";
-import toast from "react-hot-toast";
-
+import { useState } from "react";
+import { createContext } from "react";
 import BACKEND_URL from "../api/url";
+import { useEffect } from "react";
 
 export const NoteContext = createContext();
 
-export const NoteProvider = ({ children }) => {
+export const NoteProvider = ({ Children }) => {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,45 +28,27 @@ export const NoteProvider = ({ children }) => {
 
   //create a note
   const createNote = async (note) => {
-    const res = await BACKEND_URL.post("/create-note", note);
+    const res = await BACKEND_URL.post("create-note", note);
     setNotes([res.data, ...notes]);
   };
 
   //update a note
-  const updateNote = async (id, updatedNote) => {
-    const oldNote = notes.find((note) => note._id === id);
-
-    // Check if nothing changed
-    if (
-      oldNote.title === updatedNote.title &&
-      oldNote.content === updatedNote.content
-    ) {
-      toast("No changes detected.");
-      return;
-    }
-
-    try {
-      const res = await BACKEND_URL.patch(`/update-note/${id}`, updatedNote);
-      setNotes(notes.map((note) => (note._id === id ? res.data : note)));
-      toast.success("Note updated successfully!");
-    } catch (error) {
-      console.error("Error updating note:", error);
-      toast.error("Failed to update note!");
-    }
+  const updateNote = async (id, note) => {
+    const res = await BACKEND_URL.patch(`/update-note/${id}`, updateNote);
+    setNotes(notes.map((note) => (note._id ? res.data : note)));
   };
 
   // delete a note
   const deleteNote = async (id) => {
     await BACKEND_URL.delete(`/delete-note/${id}`);
     setNotes(notes.filter((note) => note._id != id));
-    toast.success("Note deleted successfully!");
   };
 
   return (
     <NoteContext.Provider
       value={{ notes, loading, createNote, updateNote, deleteNote }}
     >
-      {children}
+      {Children}
     </NoteContext.Provider>
   );
 };

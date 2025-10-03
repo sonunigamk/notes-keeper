@@ -1,4 +1,4 @@
-import express from "express";
+import exress from "express";
 import {
   createNote,
   deleteNote,
@@ -6,7 +6,7 @@ import {
   updateNote,
 } from "../controllers/note.controller.js";
 
-const router = express.Router();
+const router = exress.Router();
 
 router.post("/create-note", createNote);
 router.get("/get-notes", getNotes);
