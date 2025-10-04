@@ -12,10 +12,15 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-mongoose
-  .connect(process.env.MONGODB_URL)
-  .then(() => console.log("MongoDB connected successfully"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+try {
+  await mongoose.connect(process.env.MONGODB_URL, {
+    dbName: "notesKeeper", 
+  });
+  console.log("MongoDB connected successfully");
+} catch (err) {
+  console.error("MongoDB connection error:", err);
+}
+
 
 //Routing Middleware
 app.use(express.json());
@@ -26,6 +31,9 @@ app.use(
   })
 );
 
+app.get('/',(req,res)=>{
+  res.send("your backend is working fine")
+})
 
 app.use("/api/v1/notes", noteRouters);
 
