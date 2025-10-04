@@ -10,7 +10,7 @@ const router = exress.Router();
 
 router.post("/create-note", createNote);
 router.get("/get-notes", getNotes);
-router.patch("/update-note/:id", updateNote);
+router.put("/update-note/:id", updateNote);
 router.delete("/delete-note/:id", deleteNote);
 
 export default router;
