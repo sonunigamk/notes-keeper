@@ -21,11 +21,11 @@ mongoose
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: "*", 
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true,
   })
 );
+
 
 app.use("/api/v1/notes", noteRouters);
 
