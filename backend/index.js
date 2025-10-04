@@ -23,9 +23,10 @@ app.use(
   cors({
     origin: process.env.CLIENT_URL,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true, // if you need cookies
+    credentials: true,
   })
 );
+
 app.use("/api/v1/notes", noteRouters);
 
 app.listen(PORT, () => console.log(`server is running on port : ${PORT}`));
