@@ -16,8 +16,7 @@ export const NoteForm = () => {
     }
     createNote(note);
     setNote({ title: "", content: "" });
-    toast.success("Note created successfully!");
-    navigate("/"); 
+    navigate("/");
   };
 
   return (
