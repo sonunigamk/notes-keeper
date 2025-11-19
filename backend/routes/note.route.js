@@ -1,4 +1,4 @@
-import exress from "express";
+import express from "express"; // Fixed typo: exress -> express
 import {
   createNote,
   deleteNote,
@@ -6,11 +6,14 @@ import {
   updateNote,
 } from "../controllers/note.controller.js";
 
-const router = exress.Router();
+import { protect } from "../middleware/auth.middleware.js"; 
 
-router.post("/create-note", createNote);
-router.get("/get-notes", getNotes);
-router.put("/update-note/:id", updateNote);
-router.delete("/delete-note/:id", deleteNote);
+const router = express.Router();
+
+// Add 'protect' as the second argument
+router.post("/create-note", protect, createNote);
+router.get("/get-notes", protect, getNotes);
+router.put("/update-note/:id", protect, updateNote);
+router.delete("/delete-note/:id", protect, deleteNote);
 
 export default router;

@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 
 const noteSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User", 
+    },
     title: {
       type: String,
       required: true,
@@ -9,7 +14,7 @@ const noteSchema = mongoose.Schema(
     },
     content: {
       type: String,
-      require: true,
+      required: true,
     },
   },
   { timestamps: true }

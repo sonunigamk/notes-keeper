@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const BACKEND_URL = axios.create({
-  baseURL: "https://notes-keeper-drab.vercel.app/api/v1/notes/",
+const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_URL, 
+  withCredentials: true, 
 });
 
-export default BACKEND_URL;
+export default axiosInstance;
